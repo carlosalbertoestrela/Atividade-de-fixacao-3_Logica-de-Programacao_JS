@@ -17,10 +17,10 @@
             <h2>Calculadora de média</h2>
         <div id="at1">
             <label>
-                Nota 1:<input type="text" name="nota2" id="nota1"><br>
+                Nota 1:<input type="number" type="number" step="0.1" min="0.1" name="nota2" id="nota1"><br>
             </label>
             <label>
-                Nota 2:<input type="text" name="nota2" id="nota2">
+                Nota 2:<input type="number" type="number" step="0.1" min="0.1" name="nota2" id="nota2">
             </label>
             <button onclick="q1()">calcular</button>
         </div>
@@ -35,7 +35,7 @@
             <h2>Calculadora de reajuste salárial</h2>
         <div class="at2">
             <label>
-                Salario atual: <input type="text" name="salario" class="salario">
+                Salário atual: <b>R$</b><input type="number" type="number" placeholder="0,00" step="0.1" min="0" name="salario" class="salario">
             </label>
             <button onclick="q2()">Calcular</button>
         </div>
@@ -46,17 +46,18 @@
     <!-- Atividade 3 -->
     <section class="At3_ container">
         <div class="card">
-            <h2>Calculadora de salario/descontos mensais</h2>
+            <h2>Calculadora de salário/descontos mensais</h2>
         <label>
-            Valor/Hora: <br><input type="text" name="valor_hora" class="valor_hora"><br>
+            Valor/Hora: <br><b>R$</b><input type="number" type="number" placeholder="0,00" min="0" name="valor_hora" class="valor_hora"><br>
         </label>
 
         <label>
-            Horas trabalhadas: <br><input type="text" name="hora_trabalhada" class="hora_trabalhada"><br>
+            Horas trabalhadas: <br><input type="number" min="0" placeholder="0" name="hora_trabalhada" class="hora_trabalhada"><br>
         </label>
         <button onclick="q3()">Calcular</button>
         <div class="at3_answer"></div>
         </div>
+        
     </section>
     
 </body>

@@ -24,7 +24,7 @@ function calcula_media(nota1=0,nota2=0){
             }
         }
     }
-    return `${status} com média ${media.toFixed()}`;
+    return `${status} com média ${media.toFixed(2)}`;
 
 }
 
@@ -102,7 +102,7 @@ function folha_de_pagamento(salario_bruto){
         }
     
         let ir = salario_bruto  * porcentagem_ir(salario_bruto);
-        let total_descontos = ir + sindicato + ir;
+        let total_descontos = ir + sindicato;
         let salario_liquido = salario_bruto - (total_descontos)
 
         return {
@@ -110,7 +110,8 @@ function folha_de_pagamento(salario_bruto){
             "Imposto de Renda": ir,
             "FGTS": fgts,
             "Sindicato": sindicato,
-            "SalarioLiquido": salario_liquido,
+            "Salario Liquido": salario_liquido,
+            "Total de descontos": total_descontos,
             "Porcentagem imposto de renda": (porcentagem_ir(salario_bruto)*100 + "%")
         }
     }
@@ -136,7 +137,7 @@ function q2(){
     at2.innerHTML = 
     `<hr> <strong>
     Antigo salário: R$${info[0]} <br>
-    Percential do aumento: ${info[1]} <br>
+    Percentual do aumento: ${info[1]} <br>
     Valor do aumento: R$${info[2].toFixed(2)} <br>
     Novo salário: R$${info[3].toFixed(2)} <br>
     </strong> <hr>`
@@ -153,9 +154,15 @@ function q3(){
     folha = folha_de_pagamento(salario_bruto)    
 
     at3.innerHTML = `
-        ${folha["Salario Bruto"]}
-        
-        
+        <hr><strong>
+        Salário Bruto (${valor_hora} * ${hora_trabalhada}) = R$${folha["Salario Bruto"].toFixed(2)}<br>
+        Porcentagem IR = ${folha["Porcentagem imposto de renda"]}<br>
+        (-) IR = R$${folha["Imposto de Renda"].toFixed(2)}<br>
+        FGTS = R$${folha["FGTS"].toFixed(2)}<br>
+        (-) Sindicato = R$${folha["Sindicato"].toFixed(2)}<br>
+        Total de descontos = R$${folha["Total de descontos"].toFixed(2)}<br>
+        Salário Liquido = R$${folha["Salario Liquido"].toFixed(2)}<br>
+        </strong><hr>
     `
 
 }
