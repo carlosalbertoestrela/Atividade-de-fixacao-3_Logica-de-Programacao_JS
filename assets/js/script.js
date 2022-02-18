@@ -85,7 +85,7 @@ function folha_de_pagamento(salario_bruto){
     else{
         
         let fgts = salario_bruto * .11;
-        let sindicato = salario_bruto * .03;
+        let inss = salario_bruto * .1;
         let porcentagem_ir = (salario_bruto) => {
             if(salario_bruto > 2500){
                 return .2;
@@ -102,14 +102,15 @@ function folha_de_pagamento(salario_bruto){
         }
     
         let ir = salario_bruto  * porcentagem_ir(salario_bruto);
-        let total_descontos = ir + sindicato;
+        let total_descontos = ir + inss;
         let salario_liquido = salario_bruto - (total_descontos)
 
         return {
             "Salario Bruto": salario_bruto,
             "Imposto de Renda": ir,
             "FGTS": fgts,
-            "Sindicato": sindicato,
+            "INSS": inss,
+            "Porcentagem inss": "10%",
             "Salario Liquido": salario_liquido,
             "Total de descontos": total_descontos,
             "Porcentagem imposto de renda": (porcentagem_ir(salario_bruto)*100 + "%")
@@ -180,10 +181,9 @@ function q3(){
     at3.innerHTML = `
         <hr><strong>
         Salário Bruto (${valor_hora} * ${hora_trabalhada}) = R$${folha["Salario Bruto"].toFixed(2)}<br>
-        Porcentagem IR = ${folha["Porcentagem imposto de renda"]}<br>
-        (-) IR = R$${folha["Imposto de Renda"].toFixed(2)}<br>
+        (-) IR (${folha["Porcentagem imposto de renda"]}) = R$${folha["Imposto de Renda"].toFixed(2)}<br>
+        (-) INSS (${folha["Porcentagem inss"]}) = R$${folha["INSS"].toFixed(2)}<br>
         FGTS = R$${folha["FGTS"].toFixed(2)}<br>
-        (-) Sindicato = R$${folha["Sindicato"].toFixed(2)}<br>
         Total de descontos = R$${folha["Total de descontos"].toFixed(2)}<br>
         Salário Liquido = R$${folha["Salario Liquido"].toFixed(2)}<br>
         </strong><hr>
