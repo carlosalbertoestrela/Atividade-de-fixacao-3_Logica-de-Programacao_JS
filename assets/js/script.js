@@ -126,22 +126,35 @@ function q1(){
     let at1 = document.querySelector(".at1_answer");
     let nota1 = parseFloat(document.querySelector("#nota1").value);
     let nota2 = parseFloat(document.querySelector("#nota2").value);
-
-    at1.innerHTML = `<hr><strong>${calcula_media(nota1,nota2)}</strong><hr>`;
+    if(!nota1 || !nota2){
+        alert("Infome as duas notas")
+    }
+    else{
+        let media = calcula_media(nota1,nota2);
+        if(media){
+            at1.innerHTML = `<hr><strong>${media}</strong><hr>`;
+        }
+    
+    }
 }
 // at2
 function q2(){
     let at2 = document.querySelector(".at2_answer");
     let salario =parseFloat(document.querySelector(".salario").value) ;
     let info = calculo_de_reajuste_salarial(salario);
-    at2.innerHTML = 
-    `<hr> <strong>
-    Antigo salário: R$${info[0]} <br>
-    Percentual do aumento: ${info[1]} <br>
-    Valor do aumento: R$${info[2].toFixed(2)} <br>
-    Novo salário: R$${info[3].toFixed(2)} <br>
-    </strong> <hr>`
-    ;
+    if(salario > 999999){
+        alert("Valor inválido digitado")
+    }
+    else{
+        at2.innerHTML = 
+        `<hr> <strong>
+        Antigo salário: R$${info[0].toFixed(2)} <br>
+        Percentual do aumento: ${info[1]} <br>
+        Valor do aumento: R$${info[2].toFixed(2)} <br>
+        Novo salário: R$${info[3].toFixed(2)} <br>
+        </strong> <hr>`
+        ;
+    }
 }
 // at3
 function q3(){
@@ -149,9 +162,20 @@ function q3(){
     let hora_trabalhada = parseInt(document.querySelector(".hora_trabalhada").value);
     let valor_hora = parseFloat(document.querySelector(".valor_hora").value);
     
-
-    salario_bruto = calcula_salario_bruto(valor_hora,hora_trabalhada);
-    folha = folha_de_pagamento(salario_bruto)    
+    if(!valor_hora || !hora_trabalhada){
+        alert("Informe os valores dos dois campos para calcular os descontos")
+    }
+    else{
+        if(valor_hora > 99 || hora_trabalhada > 500){
+            alert("Valores inválidos digitados")
+        }
+        else{
+            salario_bruto = calcula_salario_bruto(valor_hora,hora_trabalhada);
+            folha = folha_de_pagamento(salario_bruto)
+        }
+         
+    }
+       
 
     at3.innerHTML = `
         <hr><strong>
@@ -167,4 +191,3 @@ function q3(){
 
 }
 
- 
